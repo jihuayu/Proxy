@@ -16,4 +16,4 @@ jobs:
       - name: Upload
         run: |
           echo Add other actions to build > 1.txt
-          ./transfer image 1.txt
+          ./transfer image ./1.txt
