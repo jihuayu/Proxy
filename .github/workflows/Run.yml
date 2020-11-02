@@ -18,4 +18,9 @@ jobs:
         run: npm i
       - name: Run
         run: |
-          npm run start
+          npm run fetch-libs
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          path: ./1.json
+          name: meta
