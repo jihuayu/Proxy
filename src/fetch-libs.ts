@@ -39,8 +39,20 @@ async function fetch() {
                 sha1: one['sha1'],
             });
         }
+        {
+            const data = await got.get(assetIndex.url);
+            const meta = JSON.parse(data.body);
+            for (let j of meta['objects']) {
+                const one = i;
+                ret.add({
+                    url: `https://resources.download.minecraft.net//${one['hash'].substr(0, 2)}/${one['hash']}`,
+                    size: one['size'],
+                    sha1: one['hash'],
+                });
+            }
+        }
     }
-    writeFileSync("./1.json", JSON.stringify(Array.from(ret), null, "\n"));
+    writeFileSync("./1.json", JSON.stringify(Array.from(ret)));
 }
 
 process.nextTick(async () => {
