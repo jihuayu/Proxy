@@ -14,7 +14,7 @@ async function fetch() {
     const meta = JSON.parse(data.body);
     for (let i of meta['versions']) {
         console.log(i.id)
-        if (i.id == "1.12.2") {
+        if (i.id == "1.16.3") {
             break;
         }
         const version_meta = i.url;
@@ -31,8 +31,8 @@ async function fetch() {
                 sha1: one['sha1'],
             });
         }
-        for (let j of downloads) {
-            const one = j;
+        for (let j in downloads) {
+            const one = downloads[j];
             ret.add({
                 url: one['url'],
                 size: one['size'],
@@ -41,8 +41,8 @@ async function fetch() {
         }
         const asset_data = await got.get(assetIndex.url);
         const asset_meta = JSON.parse(asset_data.body);
-        for (let j of asset_meta['objects']) {
-            const one = j;
+        for (let j in asset_meta['objects']) {
+            const one = asset_meta[j];
             ret.add({
                 url: `https://resources.download.minecraft.net//${one['hash'].substr(0, 2)}/${one['hash']}`,
                 size: one['size'],
