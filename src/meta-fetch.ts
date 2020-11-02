@@ -1,5 +1,4 @@
 import got from "got";
-import {writeFileSync} from "fs"
 
 const meta_url = 'http://launchermeta.mojang.com/mc/game/version_manifest.json'
 type Struct = {
@@ -9,12 +8,12 @@ type Struct = {
 }
 let ret = new Set<Struct>()
 
-async function fetch() {
+export async function fetch() {
     const data = await got.get(meta_url);
     const meta = JSON.parse(data.body);
     for (let i of meta['versions']) {
         console.log(i.id)
-        if (i.id == "1.12.2") {
+        if (i.id == "1.16.3") {
             break;
         }
         const version_meta = i.url;
@@ -50,9 +49,5 @@ async function fetch() {
             });
         }
     }
-    writeFileSync("./1.json", JSON.stringify(Array.from(ret)));
+    return Array.from(ret);
 }
-
-process.nextTick(async () => {
-    await fetch()
-})

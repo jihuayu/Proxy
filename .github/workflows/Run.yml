@@ -18,7 +18,7 @@ jobs:
         run: npm i
       - name: Run
         run: |
-          npm run fetch-libs
+          npm run start
       - name: Upload
         uses: actions/upload-artifact@v2
         with:

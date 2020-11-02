@@ -13,7 +13,6 @@
 
   },
   "scripts": {
-    "start": "ts-node index.ts",
-    "fetch-libs": "ts-node src/fetch-libs.ts"
+    "start": "ts-node index.ts"
   }
 }
