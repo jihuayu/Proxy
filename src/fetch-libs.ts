@@ -14,6 +14,9 @@ async function fetch() {
     const meta = JSON.parse(data.body);
     for (let i of meta['versions']) {
         console.log(i.id)
+        if (i.id == "1.12.2") {
+            break;
+        }
         const version_meta = i.url;
         const data = await got.get(version_meta);
         const meta = JSON.parse(data.body);
@@ -39,6 +42,7 @@ async function fetch() {
     }
     writeFileSync("./1.json", JSON.stringify(Array.from(ret), null, "\n"));
 }
-process.nextTick(async ()=>{
+
+process.nextTick(async () => {
     await fetch()
 })
