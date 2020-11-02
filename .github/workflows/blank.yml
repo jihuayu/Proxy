@@ -15,6 +15,7 @@ jobs:
         with:
           node-version: '14'
       - name: Install
-      - run: npm i
-      - run: |
+        run: npm i
+      - name: Run
+        run: |
           npm run start
