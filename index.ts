@@ -7,7 +7,12 @@ process.nextTick(async () => {
     const meta = await fetch();
     for (let i of meta) {
         try {
-            ret.push(await transfer(i));
+            ret.push({
+                url: i.url,
+                hash: i.sha1,
+                size: i.size,
+                object: await transfer(i)
+            });
         } catch (e) {
             console.log(e)
         }
