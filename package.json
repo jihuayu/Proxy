@@ -4,11 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@types/form-data": "^2.5.0",
     "form-data": "^3.0.0",
     "got": "^11.8.0",
     "split-buffer": "^1.0.0",
-    "typescript": "^4.0.5"
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.5",
+    "@types/form-data": "^2.5.0"
+
   },
   "scripts": {
     "start": "ts-node index.ts"

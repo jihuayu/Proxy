@@ -1,4 +1,4 @@
-name: CI
+name: Run
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '14'
       - name: Install
-        run: npm i
+        run: npm ci
       - name: Run
         run: |
           npm run start
