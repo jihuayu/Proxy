@@ -32,24 +32,22 @@ async function fetch() {
             });
         }
         for (let j of downloads) {
-            const one = i;
+            const one = j;
             ret.add({
                 url: one['url'],
                 size: one['size'],
                 sha1: one['sha1'],
             });
         }
-        {
-            const data = await got.get(assetIndex.url);
-            const meta = JSON.parse(data.body);
-            for (let j of meta['objects']) {
-                const one = i;
-                ret.add({
-                    url: `https://resources.download.minecraft.net//${one['hash'].substr(0, 2)}/${one['hash']}`,
-                    size: one['size'],
-                    sha1: one['hash'],
-                });
-            }
+        const asset_data = await got.get(assetIndex.url);
+        const asset_meta = JSON.parse(asset_data.body);
+        for (let j of asset_meta['objects']) {
+            const one = j;
+            ret.add({
+                url: `https://resources.download.minecraft.net//${one['hash'].substr(0, 2)}/${one['hash']}`,
+                size: one['size'],
+                sha1: one['hash'],
+            });
         }
     }
     writeFileSync("./1.json", JSON.stringify(Array.from(ret)));
