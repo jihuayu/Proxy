@@ -2,7 +2,6 @@ import {fetch} from "./src/meta-fetch";
 import {transfer} from "./src/assets-transfer";
 import {writeFileSync} from "fs"
 
-
 process.nextTick(async () => {
     let ret = []
     const meta = await fetch();

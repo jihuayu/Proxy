@@ -43,7 +43,7 @@ export async function fetch() {
         for (let j in asset_meta['objects']) {
             const one = asset_meta['objects'][j];
             ret.add({
-                url: `https://resources.download.minecraft.net//${one['hash'].substr(0, 2)}/${one['hash']}`,
+                url: `https://resources.download.minecraft.net/${one['hash'].substr(0, 2)}/${one['hash']}`,
                 size: one['size'],
                 sha1: one['hash'],
             });
