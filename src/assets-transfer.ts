@@ -22,6 +22,7 @@ export async function transfer(struct: Struct) {
         return null;
     }
     const buffers = split(data.rawBody, 4 * 1000 * 1000);
+    console.log(`dl ${struct.url} succeed!`)
     let index = 0;
     for (let i of buffers) {
         const name = `${Date.now()}`
@@ -48,5 +49,6 @@ export async function transfer(struct: Struct) {
             size: meta.size
         })
     }
+    console.log(`up ${struct.url} succeed!`)
     return ret;
 }

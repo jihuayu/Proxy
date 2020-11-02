@@ -6,12 +6,13 @@ import {writeFileSync} from "fs"
 process.nextTick(async () => {
     let ret = []
     const meta = await fetch();
-    try {
-        for (let i of meta) {
+    for (let i of meta) {
+        try {
             ret.push(await transfer(i));
+        } catch (e) {
+            console.log(e)
         }
-    } catch (e) {
-        console.log(e)
     }
+
     writeFileSync("./1.json", JSON.stringify(ret));
 })
