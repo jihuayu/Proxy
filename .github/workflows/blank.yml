@@ -11,9 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '14'
       - name: Install
-        run: curl -sL https://git.io/file-transfer | sh 
-      - name: Upload
-        run: |
-          echo Add other actions to build > 1.txt
-          ./transfer image ./1.txt
+      - run: npm i
+      - run: |
+          npm run start
