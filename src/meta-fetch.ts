@@ -13,7 +13,7 @@ export async function fetch() {
     const meta = JSON.parse(data.body);
     for (let i of meta['versions']) {
         console.log(i.id)
-        if (i.id == "1.16.3") {
+        if (i.id == "1.12.2") {
             break;
         }
         const version_meta = i.url;
